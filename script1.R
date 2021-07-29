@@ -96,9 +96,17 @@ ts1 <- ts(hadi_ts,start = c(1920,1),frequency = 12)
 plot(ts1)
 ####
 
-ts2 <- ts(er_ts,start = c(1920,1),frequency = 12)
+ts2 <- ts(er_ts[-1200],start = c(1920,1),frequency = 12)
 
 #corelation  between ersst & hadISST
-cor(ts1,ts2[1:1199]) #highly corelated  
+cor(ts1,ts2) #highly corelated  
 # corelation coefficient 0.9711249
+
+
+
+
+
+
+
+
 
