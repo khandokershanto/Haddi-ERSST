@@ -112,9 +112,35 @@ windows(width = 6,height = 4)
 plot(sadj_er,col = 'steelblue4')
 lines(sadj_hadi,col='red4')
 
+# yearly averaged time series for better visualization
 
+# data-frame
 
+hadi_df <- data.frame(sst = hadi_ts,year = year)
+er_df <- data.frame(sst = er_ts, year = year_)
 
+an_hadi_ts <- xts(hadi_ts,order.by = year)
+an_hadi_ts <- apply.yearly(an_hadi_ts,mean)
+
+ts1 <- coredata(an_hadi_ts)
+ts1 <- ts(ts1,start = 1920,frequency = 1)
+plot(ts1)
+
+an_er_ts <- xts(er_ts,order.by = year_)
+an_er_ts <- apply.yearly(an_er_ts,mean)
+
+ts2 <- coredata(an_er_ts)
+ts2 <- ts(ts2,start = 1920,frequency = 1)
+plot(ts2)
+# combine plot
+
+windows(width = 5.5, height = 4)
+
+png('combined.png',width = 5.5,height = 4,units = 'in',res = 300)
+plot(ts1,col='blue4',xlab = 'Year', ylab = 'SST (°C)')
+lines(ts2, col = 'red4')
+legend(x=1920,y=29,legend = c('HadISST','ERSST'),lty = c(1,1),col = c('blue4','red4'),lwd = 2)
+dev.off()
 
 
 
