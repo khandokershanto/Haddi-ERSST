@@ -1,1 +1,1 @@
-# Haddi-ERSST
+# HadISST and ERSST data combination
