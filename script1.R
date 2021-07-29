@@ -46,12 +46,7 @@ png('monthly_hadiSST.png',width = 6,height = 4,units = 'in',res = 300)
 plot(ts,xlab = 'SST',ylab = 'Year')
 dev.off()
 
-# seasonally adjusted 
-decomposed <- decompose(ts, type = "additive")
-sadj_hadi <- ts - decomposed$seasonal
 
-windows(width = 6,height = 4)
-plot(sadj_hadi)
 
 
 ###################ERSST
@@ -102,7 +97,20 @@ ts2 <- ts(er_ts[-1200],start = c(1920,1),frequency = 12)
 cor(ts1,ts2) #highly corelated  
 # corelation coefficient 0.9711249
 
+#  seasonally adjusted
 
+decomposed <- decompose(ts1, type = "additive")
+sadj_hadi <- ts1 - decomposed$seasonal
+
+windows(width = 6,height = 4)
+plot(sadj_hadi)
+
+decomposed <- decompose(ts2, type = "additive")
+sadj_er <- ts2 - decomposed$seasonal
+
+windows(width = 6,height = 4)
+plot(sadj_er,col = 'steelblue4')
+lines(sadj_hadi,col='red4')
 
 
 
