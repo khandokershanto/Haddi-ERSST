@@ -132,15 +132,20 @@ an_er_ts <- apply.yearly(an_er_ts,mean)
 ts2 <- coredata(an_er_ts)
 ts2 <- ts(ts2,start = 1920,frequency = 1)
 plot(ts2)
+
 # combine plot
 
-windows(width = 5.5, height = 4)
+ts3 <- (ts1+ts2)/2 #average
 
-png('combined.png',width = 5.5,height = 4,units = 'in',res = 300)
-plot(ts1,col='blue4',xlab = 'Year', ylab = 'SST (°C)')
-lines(ts2, col = 'red4')
-legend(x=1920,y=29,legend = c('HadISST','ERSST'),lty = c(1,1),col = c('blue4','red4'),lwd = 2)
+windows(width = 6, height = 4)
+
+png('combined_avg.png',width = 6,height = 4,units = 'in',res = 300)
+plot(ts1,col='blue',xlab = 'Year', ylab = 'SST (°C)',lty = 2,lwd = 1.5)
+lines(ts2, col = 'red',lty = 3, lwd = 1.5)
+lines(ts3,col='black',lwd = 1.5, lty=1)
+legend(x=1920,y=29.1,legend = c('HadISST','ERSST','Filtered Average'),lty = c(2,3,1),col = c('blue','red','black'),lwd = 2,cex = 0.8)
+
 dev.off()
-
+#######################
 
 
