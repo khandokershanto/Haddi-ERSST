@@ -140,10 +140,10 @@ ts3 <- (ts1+ts2)/2 #average
 windows(width = 6, height = 4)
 
 png('combined_avg.png',width = 6,height = 4,units = 'in',res = 300)
-plot(ts1,col='blue',xlab = 'Year', ylab = 'SST (°C)',lty = 2,lwd = 1.5)
+plot(ts1,col='blue',xlab = 'Year', ylab = 'SST (°C)',lty = 2,lwd = 1.5,las=1)
 lines(ts2, col = 'red',lty = 3, lwd = 1.5)
-lines(ts3,col='black',lwd = 1.5, lty=1)
-legend(x=1920,y=29.1,legend = c('HadISST','ERSST','Filtered Average'),lty = c(2,3,1),col = c('blue','red','black'),lwd = 2,cex = 0.8)
+lines(ts3,col='lawngreen',lwd = 1.5, lty=1)
+legend(x=1920,y=29.1,legend = c('HadISST','ERSST','Filtered Average'),lty = c(2,3,1),col = c('blue','red','lawngreen'),lwd = 2,cex = 0.8)
 
 dev.off()
 #######################
